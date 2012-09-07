@@ -1,5 +1,4 @@
 require 'bundler/capistrano'
-require 'rvm/capistrano'
 
 set :scm, :git
 set :application, "portfolio"
@@ -17,13 +16,6 @@ set :use_sudo, true
 role :web, "alechoey.com"                          # Your HTTP server, Apache/etc
 role :app, "alechoey.com"
 role :db,  "alechoey.com", :primary => true # This is where Rails migrations will run
-
-set :rvm_ruby_string, 'ruby-1.9.3-p194@global'
-set :rvm_install_ruby_params, '--1.9'
-
-before 'deploy:setup', 'rvm:install_rvm'   # install RVM
-before 'deploy:setup', 'rvm:install_ruby'  # install Ruby and create gemset, or:
-before 'deploy:setup', 'rvm:create_gemset' # only create gemset
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
