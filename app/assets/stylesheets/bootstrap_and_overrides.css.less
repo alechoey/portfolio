@@ -1,0 +1,105 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-path('fontawesome-webfont.eot');
+@fontAwesomeWoffPath: asset-path('fontawesome-webfont.woff');
+@fontAwesomeTtfPath: asset-path('fontawesome-webfont.ttf');
+@fontAwesomeSvgzPath: asset-path('fontawesome-webfont.svgz');
+@fontAwesomeSvgPath: asset-path('fontawesome-webfont.svg');
+
+// Font Awesome
+@import "fontawesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+@linkColor: #c1273d;
+@navbarText: #777;
+@navbarLinkColorHover: #c1273d;
+
+html {
+}
+
+body {
+  background-color: #efefef;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#fff)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #efefef, #fff); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #efefef, #fff); /* Firefox 3.6-15 */
+  background-image:      -o-linear-gradient(top, #efefef, #fff); /* Opera 11.10+ */
+  background-image:         linear-gradient(to bottom, #efefef, #fff); /* Firefox 16+ */
+}
+
+.tagline {
+  color: #c1273d;
+  margin-bottom: 50px;
+}
+
+.navbar .container {
+  width: 1170px;
+  padding-top: 10px;
+}
+
+.navbar .nav li > a {
+  font-size: 14px;
+  margin-left: 100px;
+  text-shadow: none;
+}
+
+.navbar, .navbar-inner {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+#logo {
+  display: block;
+  width: 250px;
+  margin-top: -40px;
+  margin-bottom: 18px;
+}
+
+.content p, .content ul li {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.content p {
+  margin-bottom: 24px;
+  &.flush-bottom {
+    margin-bottom: 0px;
+  }
+}
+
+.content ul {
+  margin-bottom: 24px;
+}
+
+.photo-banner {
+  padding: 20px 0;
+  background-color: #666;
+  background-image: asset-url("quilted_background.png");
+  background-repeat: repeat;
+  margin-bottom: 28px;
+  box-shadow: 2px 2px 8px #333;
+}
+
+.photo-banner img {
+  max-width: 1170px;
+  margin: auto;
+  box-shadow: 2px 2px 12px #171717;
+}
+
+.foldaway { display: none; }

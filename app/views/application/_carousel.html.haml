@@ -1,0 +1,13 @@
+- items ||= []
+- id ||= 'myCarousel'
+.carousel{:id => id}
+  <!-- Carousel items -->
+  .carousel-inner
+    - items.each_with_index do |item, i|
+      - if i == 0
+        .active.item= image_tag item
+      - else
+        .item= image_tag item 
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="##{id}" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="##{id}" data-slide="next">&rsaquo;</a>
