@@ -13,6 +13,6 @@ namespace :deploy do
   
   desc 'restarts the app server'
   task :restart do
-    run "cd #{RAILS_ROOT} && touch tmp/restart.txt"
+    run "touch #{File.join(RAILS_ROOT, 'tmp/restart.txt')}"
   end
 end
