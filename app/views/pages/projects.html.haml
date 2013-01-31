@@ -5,7 +5,7 @@
     .row
       .span4
         .well
-          %h1 Groupon
+          %h2 Groupon
           %p.flush-bottom= link_to 'http://groupon.com/', 'http://groupon.com/'
           %p.flush-bottom Summer 2012
       .span8
@@ -30,7 +30,7 @@
     .row
       .span4
         .well
-          %h1 WSWE
+          %h2 WSWE
           %p.flush-bottom= link_to 'http://whereshouldweeat.org/', 'http://whereshouldweeat.org/'
           %p.flush-bottom Spring 2012
       .span8
@@ -42,7 +42,18 @@
           Being an indecisive person myself, I wanted to use it to help me decide on a nearby restaurant to eat at.
           I got data from the Yelp! API and randomly select several restaurants near a specified location. This was
           my first version that I released within two days.
-          
+
+        %p
+          %strong Update January 2013
+          %br
+          A new load of features has been added. Most notably, WSWE is able to provide "smart" recommendations personal preferences,
+          such as favorites, likes, restaurant lists, and more. It uses a machine learning algorithm called collaborative filtering.
+          Given there is enough data, it will recommend similar restaurants to the ones I like or similarly restaurants that similar
+          users like. The site has also been redesigned and advanced admin restaurant coverage analytics and choropleth maps have been
+          added with d3.js.
+        
+        %br
+        
         %p
           Fast forward two months. I had built lists, favorites, saved places, and friendships in addition to recommendations 
           based off of lists, favorites, or places belonging to a specific user. With all these different types of recommendations,
@@ -119,7 +130,7 @@
     .row
       .span4
         .well
-          %h1 Magoosh
+          %h2 Magoosh
           %p.flush-bottom= link_to 'http://gre.magoosh.com/', 'http://gre.magoosh.com/'
           %p.flush-bottom Summer 2011 to Spring 2012
       .span8
@@ -134,11 +145,31 @@
         %p
           %strong The technologies:
           Ruby on Rails, jQuery, Ruby, MySQL, HAML & SASS 
-          
+    
     .row
       .span4
         .well
-          %h1 CS 188 Website
+          %h2 CalTeachables
+          %p.flush-bottom Fall 2012
+      .span8
+        %h3 Rails Developer/Scrum master
+        %p
+          This was a project for a Berkeley educational nonprofit that promotes science and math in local high schools. Four others and
+          I built a lesson plan repository complete with full-text search, multiple user roles and permission models, wiki markup, ratings,
+          comments and more.
+        %p
+          I also played a large part in organizing the team as the appointed scrum master, running code reviews, dividing work, and ensuring
+          everyone complied with modern agile software engineering practices, including behavior-driven testing, version control, code patterns,
+          refactorings, and more.
+
+        %p
+          %strong The technologies:
+          Ruby on Rails, Solr, jQuery
+       
+    .row
+      .span4
+        .well
+          %h2 CS 188 Website
           %p.flush-bottom= link_to 'http://cs188.org/', 'http://cs188.org/'
           %p.flush-bottom Spring 2012
       .span8
@@ -157,7 +188,7 @@
     .row
       .span4
         .well
-          %h1 Bentohaus
+          %h2 Bentohaus
           %p.flush-bottom= link_to 'http://bentohaus.com/', 'http://bentohaus.com/'
           %p.flush-bottom Fall 2011
       .span8
@@ -177,7 +208,7 @@
     .row
       .span4
         .well
-          %h1 Koinonia Berkeley
+          %h2 Koinonia Berkeley
           %p.flush-bottom= link_to 'http://koinonia.net/berkeley', 'http://koinonia.net/berkeley'
           %p.flush-bottom Summer 2012
       .span8

@@ -1,12 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.1.10'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'haml'
 gem 'haml-rails'
+gem 'less-rails'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 
