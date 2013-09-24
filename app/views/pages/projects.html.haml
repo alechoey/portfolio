@@ -5,25 +5,33 @@
     .row
       .span4
         .well
+          %h2 Google
+          %p.flush-bottom= link_to 'http://offers.google.com/', 'http://offers.google.com'
+          %p.flush-bottom Summer 2013
+      .span8
+        %h3.red Offers Ads Distribution Intern
+        %ul
+          %li Built a MapReduce pipeline to join large-scale and fragmented data sources using hybrid-hash joins and massive tables.
+          %li Applied massively-scale ML techniques to train classification data on ad click conversions
+          %li Developed an extensible library to allow flexible feature selection for experimentation
+          %li Used model selection techniques to determine relevant feature sets and tuning parameters
+        %p
+          %strong The technologies:
+          MapReduce, C++, proprietary Google tech
+
+.container
+  .content
+    .row
+      .span4
+        .well
           %h2 Groupon
           %p.flush-bottom= link_to 'http://groupon.com/', 'http://groupon.com/'
           %p.flush-bottom Summer 2012
       .span8
-        %h3 Smartdeals Intern
-        %p
-          The Smartdeals team at Groupon is responsible for sending the most relevant deals to users in the daily deals email.
-          To maximize revenue for the company, we're constantly bettering our deal-user matching algorithms, and therefore, we
-          need to run experiments to understand what works and what doesn't. However, to measure these experiments, we only have
-          metrics from sales, which are only a secondary effect of the experiment; there are a lot of other factors that can affect
-          the metrics, like: the set of deals running, noise, and very expensive travel deals, just to name a few.
-
-        %p
-          So as an intern on this team, it was my responsibility to build a system that would allow us to accurately measure the primary
-          effect of an experiment: how many users the experiment gave a different set or ordering of deals. I built a workflow
-          to find recent email calculations, setup and run a calculation with everyone in control groups, and compare everyone's
-          rankings and record data for millions of users. In the end of the summer, I was able to build a concise, well-written tool to further the
-          team's, and ultimately Groupon's, bread and butter: sending out relevant, targeted deals to interested users.
-          
+        %h3.red Smartdeals/Relevance Intern
+        %ul
+          %li Developed a Hadoop parity pipeline to measure affected users by email ranking experiments
+          %li Pipeline feedsback on experiements to give faster statistical significance theshholds  
         %p
           %strong The technologies:
           Hadoop, Java, Ruby
@@ -34,94 +42,11 @@
           %p.flush-bottom= link_to 'http://whereshouldweeat.org/', 'http://whereshouldweeat.org/'
           %p.flush-bottom Spring 2012
       .span8
-        %h3
-          Project Lead / Lead Developer
-          %span.label.label-success Active Development
-        %p
-          Whershouldweeat is a project I started in collaboration with Jeff Chang to help people decide where to eat.
-          Being an indecisive person myself, I wanted to use it to help me decide on a nearby restaurant to eat at.
-          I got data from the Yelp! API and randomly select several restaurants near a specified location. This was
-          my first version that I released within two days.
-
-        %p
-          %strong Update January 2013
-          %br
-          A new load of features has been added. Most notably, WSWE is able to provide "smart" recommendations personal preferences,
-          such as favorites, likes, restaurant lists, and more. It uses a machine learning algorithm called collaborative filtering.
-          Given there is enough data, it will recommend similar restaurants to the ones I like or similarly restaurants that similar
-          users like. The site has also been redesigned and advanced admin restaurant coverage analytics and choropleth maps have been
-          added with d3.js.
-        
-        %br
-        
-        %p
-          Fast forward two months. I had built lists, favorites, saved places, and friendships in addition to recommendations 
-          based off of lists, favorites, or places belonging to a specific user. With all these different types of recommendations,
-          I wanted an efficient way to query data in order to do analytics, without the significant performance hit that came with
-          Single-Table Inheritance. Instead I tried Multiple-Table Inheritance, where each child class has it's own model, but is
-          also associated with a parent model object that holds common features of the child classes. 
-        
-        %p.foldaway-open{:trigger => 'wswe'}
-          = link_to_function 'Read more...', "foldawayOpen('wswe');"
-          
-        .foldaway{:name => 'wswe'}
-          %p
-            On top of that, I also wrote
-            some Ruby to make the getters/setters available to the child classes, making code like this possible:
-          
-          %pre.code.prettyprint
-            :preserve
-              class RecommendationBase < ActiveRecord::Base
-                attr_accessible :location, :distance, :category
-                belongs_to :user
-                belongs_to :recommendable, :polymorphic => true
-                has_many :restaurant_recommendations, :dependent => :destroy, 
-                    :foreign_key => :recommendation_id
-                has_many :restaurants, :through => :restaurant_recommendations
-              end
-
-              class RandomRecommendation < ActiveRecord::Base
-                acts_as_recommendable
-                validates :location, :presence => true
-                # Other Ruby code...
-              end
-            
-              class ListRecommendation < ActiveRecord::Base
-                acts_as_recommendable
-                belongs_to :restaurant_list, :foreign_key => :list_id
-                has_many :list_restaurants, :class_name => 'Restaurant', 
-                    :source => :restaurants, :through => :restaurant_list
-                # Other Ruby code...
-              end
-            
-              # Creating a RandomRecommendation or ListRecommendation will also create
-              # appropriate RecommendationBase object too
-              RandomRecommendation.create(:location => 'Berkeley, CA')
-              => #&lt;RandomRecommendation id: 8, created_at: "2012-08-09 18:00:19", updated_at: "2012-08-09 18:00:19"&gt;
-            
-              RandomRecommendation.count
-              => 1
-              RecommendationBase.count
-              => 1
-            
-              ListRecommendation.create(:location => 'San Francisco, CA', :list_id => 1)
-              => #&lt;ListRecommendation id: 3, created_at: "2012-08-09 18:02:36", updated_at "2012-08-09 18:02:36", list_id 2&gt;
-              ListRecommendation.count
-              => 1
-              RecommendationBase.count
-              => 2
-          
-          %p
-            Pretty cool, huh? Now instead of having one table with all the same columns and querying based on the name of the
-            subclass as it's done in STI, I actually have a table for each child class and a table for the parent class each with
-            the exact set of fields that I want, which is a lot more like now it's done in programming languages like Java. I even can
-            run validations on the parent class fields from within the child class and it automatically builds my parent class object
-            when any child object is instantiated. This was definitely one of the more advanced things I've done in Rails
-            that I'm pretty excited about. I think it's pretty awesome that I was able to achieve this amount of power and flexibility
-            in the data representation with some neatly written Ruby and cleverly designed schema.
-            
-          %p.foldaway-close
-            = link_to_function 'Read less', "foldawayClose('wswe')"
+        %h3.red Personal Project
+        %ul
+          %li Complex multi-table polymorphic associations between different types of recommendations
+          %li Loads of features: list, favorites, places, admin, chloropleth maps, etc.
+          %li Experimented with recommender systems with Adobe Mahout
                   
         %p
           %strong The technologies:
@@ -134,13 +59,10 @@
           %p.flush-bottom= link_to 'http://gre.magoosh.com/', 'http://gre.magoosh.com/'
           %p.flush-bottom Summer 2011 to Spring 2012
       .span8
-        %h3 Rails Developer Intern
-        %p
-          Magoosh is a web-based test-preparation company focused on GRE, GMAT, SAT, and TOEFL. They maintain a web-application written
-          in Ruby on Rails to allow users to answer practice test questions, view video explanations. As an intern at Magoosh, I learned the
-          basics of the Rails MVC stack, Ruby, scopes, Agile Development, design principles, and the basics of running a start-up. One of my
-          large projects included writing an interactive jQuery calculator that was moveable, draggable, held preferences, properly applied
-          math logic, and interacted with the page. I also wrote some logic to implement new question types and more.
+        %h3.red Rails Developer Intern
+        %ul
+          %li Full-stack development from modeling to front-end jQuery calculator
+          %li Learned the wonders of Agile development and modern software engineering
         
         %p
           %strong The technologies:
@@ -152,92 +74,11 @@
           %h2 CalTeachables
           %p.flush-bottom Fall 2012
       .span8
-        %h3 Rails Developer/Scrum master
-        %p
-          This was a project for a Berkeley educational nonprofit that promotes science and math in local high schools. Four others and
-          I built a lesson plan repository complete with full-text search, multiple user roles and permission models, wiki markup, ratings,
-          comments and more.
-        %p
-          I also played a large part in organizing the team as the appointed scrum master, running code reviews, dividing work, and ensuring
-          everyone complied with modern agile software engineering practices, including behavior-driven testing, version control, code patterns,
-          refactorings, and more.
+        %h3.red Rails Developer
+        %ul
+          %li Developed lesson plan repository for local nonprofit with full-text search, admin approval system, and reviews
+          %li Managed a team of 5 other developers with Agile as scrum master
 
         %p
           %strong The technologies:
           Ruby on Rails, Solr, jQuery
-       
-    .row
-      .span4
-        .well
-          %h2 CS 188 Website
-          %p.flush-bottom= link_to 'http://cs188.org/', 'http://cs188.org/'
-          %p.flush-bottom Spring 2012
-      .span8
-        %h3 Rails Developer
-        %p
-          This was one of the precursors to the Berkeley/MIT collaboration of edX, the open-source education start-up. In an 18-hour
-          hackathon, I added video conferencing capabilities to allow users to collaborate on homework assignments and quizzes using
-          the 
-          = link_to 'TokBox', 'http://tokbox.com/'
-          API. I also implemented a video chat session model that let people know who was online and chatting using AJAX polling.
-          
-        %p
-          %strong The technologies:
-          Ruby on Rails, AJAX, jQuery, OAuth, TokBox API (flash)
-          
-    .row
-      .span4
-        .well
-          %h2 Bentohaus
-          %p.flush-bottom= link_to 'http://bentohaus.com/', 'http://bentohaus.com/'
-          %p.flush-bottom Fall 2011
-      .span8
-        %h3
-          Rails Developer
-          %span.label.label-inverse Stale Development
-        %p
-          Bentohaus is a solo-project I started to solidify my grasp on Rails and try building a useful application. In it, I built
-          user authentication with hashed and salted passwords, a simple messaging system, bill-splitting logic using dynamic forms,
-          interactive Javascript charts with AJAX-loaded data, Solr-based full-text search, and more. However, I stopped development to
-          focus on other projects, especially since my apartment ended up using a different utility with similar features.
-          
-        %p
-          %strong The technologies:
-          Ruby on Rails, jQuery, AJAX, Solr
-
-    .row
-      .span4
-        .well
-          %h2 Koinonia Berkeley
-          %p.flush-bottom= link_to 'http://koinonia.net/berkeley', 'http://koinonia.net/berkeley'
-          %p.flush-bottom Summer 2012
-      .span8
-        %h3 Front-end Developer
-        %p
-          I modified an existing Wordpress theme for a campus Christian fellowship I am a part of. I did extensive styling changes with
-          HTML and CSS and familiarized myself with PHP and the Wordpress API to integrate widgets and change different aspects of the site.
-        %p
-          %strong The technologies:
-          HTML, CSS, Wordpress, PHP
-
-    .section
-      %h3 any many many more including:
-      %ul
-        %li 
-          Pacman Artificial Intelligence
-          %ul
-            %li Search methods like iterative-deepening, greedy search, uniform cost, and A* search
-            %li Multiagent game theory like minimax, expectimax, and utility theory
-            %li Markov decision problems, reinforcement learning, and other stochastic algorithms
-        %li 
-          Pagerank Mapreduce
-          %ul
-            %li Running a real Hadoop cluster on the AWS EC2 cloud
-            %li Experience using Hadoop to solve large, massively parallel problems
-        %li
-          OpenGL Programming
-          %ul
-            %li Transformation matrix manipulation
-            %li Raytracing
-            %li Particle effects
-        %li and others, many of which you can find on #{link_to 'GitHub', 'http://github.com/alechoey'}
