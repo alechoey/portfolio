@@ -20,7 +20,7 @@ listen 3001 # we can't use sockets because it breaks no-downtime deploys :(
 # since Capistrano cleans up old releases we need to tell 
 # http://unicorn.bogomips.org/Unicorn/Configurator.html#method-i-working_directory
 working_directory '/u/apps/portfolio/current'
-portfolio
+
 # Set the path of the log files
 stderr_path '/u/apps/portfolio/shared/log/unicorn.stderr.log'
 stdout_path '/u/apps/portfolio/shared/log/unicorn.stdout.log'
