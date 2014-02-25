@@ -6,8 +6,8 @@ God.watch do |w|
   w.start = "cd #{RAILS_ROOT} && \
     UNICORN_WORKERS=3 bundle exec unicorn_rails \
     -c #{File.join(RAILS_ROOT, 'config/deploy/assets/unicorn.rb')} \
-    -E production -D && script/delayed_job start"
-  w.stop = "kill -s QUIT `cat #{PID_PATH}` && #{File.join(RAILS_ROOT, 'script', 'delayed_job')} stop"
+    -E production -D"
+  w.stop = "kill -s QUIT `cat #{PID_PATH}`"
   w.restart = "kill -s USR2 `cat #{PID_PATH}`"
 
   w.dir = RAILS_ROOT
