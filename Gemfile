@@ -37,6 +37,7 @@ gem 'capistrano'
 group :production do
   gem 'unicorn'
   gem 'pg'
+  gem 'god'
 end
 
 group :development do
