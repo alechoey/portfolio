@@ -14,7 +14,7 @@ timeout 60
 # We will point the upstream Nginx module to this port later on
 # The :tcp_nopush => false option allows for HTTP streaming, but we shouldn't need it
 # listen '/home/ubuntu/apps/magoosh_app/current/tmp/sockets/unicorn.sock' #, :tcp_nopush => false
-listen 3000 # we can't use sockets because it breaks no-downtime deploys :(
+listen 3001 # we can't use sockets because it breaks no-downtime deploys :(
 
 # By default, Unicorn master processes fork to the same directory that they were started in, but
 # since Capistrano cleans up old releases we need to tell 
@@ -28,7 +28,7 @@ stdout_path '/u/apps/whereshouldweeat/shared/log/unicorn.stdout.log'
 # Set the path of the PID file
 pid_path = '/u/apps/whereshouldweeat/shared/pids/unicorn.pid'
 
-pid pid_path 
+pid pid_path
 
 before_exec do |server|
   ##
